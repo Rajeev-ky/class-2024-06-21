@@ -1,0 +1,56 @@
+---
+title: "Albama Income"
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| 
+
+library(tidyverse)
+library(readxl)
+
+```
+
+```{r}
+#| label: plot
+#| 
+
+df <- read_excel("data/df1.xlsx", sheet = "data1")
+
+```
+
+```{r}
+# Plotting
+ggplot(df, aes(x = fct_rev(fct_reorder(county, median_income)), y = median_income, fill = household_types)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Median Income by Household Type and County",
+       subtitle = "Shelby county has highest median incomes in all household category",
+       x = "County",
+       y = "Median Income",
+       fill = "Household Type") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, size = 8), legend.position = "bottom") +
+  scale_y_continuous(labels = scales::label_dollar()) +
+  facet_wrap(~ household_types, scales = "free")
+```
+
+```{r}
+#| warning: false
+
+# Plotting
+ggplot(df, aes(x = fct_rev(fct_reorder(county, mean_income)), y = mean_income, fill = household_types)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Mean Income by Household Type and County",
+       subtitle = "Madison county has highest mean income all household category",
+       x = "County",
+       y = "Mean Income",
+       fill = "Household Type") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90,size = 8), legend.position = "bottom") +
+  scale_y_continuous(labels = scales::label_dollar()) +
+  facet_wrap(~ household_types, scales = "free")
+```
+
