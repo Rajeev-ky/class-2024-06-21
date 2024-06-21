@@ -27,7 +27,7 @@ df <- read_excel("data/df1.xlsx", sheet = "data1")
 ggplot(df, aes(x = fct_rev(fct_reorder(county, median_income)), y = median_income, fill = household_types)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   labs(title = "Median Income by Household Type and County",
-       subtitle = "Shelby county has highest median incomes in all household category",
+       subtitle = "Shelby county has highest median incomes of all household category",
        x = "County",
        y = "Median Income",
        fill = "Household Type") +
@@ -44,7 +44,7 @@ ggplot(df, aes(x = fct_rev(fct_reorder(county, median_income)), y = median_incom
 ggplot(df, aes(x = fct_rev(fct_reorder(county, mean_income)), y = mean_income, fill = household_types)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   labs(title = "Mean Income by Household Type and County",
-       subtitle = "Madison county has highest mean income all household category",
+       subtitle = "Madison county has highest mean income of all household category",
        x = "County",
        y = "Mean Income",
        fill = "Household Type") +
